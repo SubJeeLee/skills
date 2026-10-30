@@ -19,6 +19,7 @@ description: 제한 시간 코딩 에이전트 과제의 준비·리허설 또�
 | 초기 역할·요구사항 파악 | [문제 정의](references/problem-definition.md), 필요하면 [프롬프트](references/prompts.md) |
 | 설계·범위 선택 | [설계](references/design.md), 도구 선택 시 [계획 도구](references/planning-tools.md) |
 | 구현·역할 분담 | [구현](references/implementation.md) |
+| 멀티 에이전트 구성·위임·통합 기록 | [멀티 에이전트 운영](references/multi-agent.md) |
 | 오류·완료 검증 | [검증](references/verification.md) |
 | 맥락 정리·세션 인계 | [인계](references/handoff.md) |
 | 시험 전 설명 연습 | [서술형 준비](references/written-practice.md) |

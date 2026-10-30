@@ -12,6 +12,7 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 | 180분 전체 시나리오 | [응시 시나리오](skills/cofa-delivery/references/scenario.md) |
 | 확인된 규칙과 미확인 사항 | [규칙 요약](skills/cofa-delivery/references/exam-boundaries.md) |
 | 첫 요청과 단계별 요청 예시 | [프롬프트](skills/cofa-delivery/references/prompts.md) |
+| 에이전트 역할·수정 경계·검증과 판단 기록 | [멀티 에이전트 운영](skills/cofa-delivery/references/multi-agent.md) |
 | Spec Kit·BMAD·Superpowers 역할 비교 | [계획 도구](skills/cofa-delivery/references/planning-tools.md) |
 | 하네스·Skill·MCP 후보 | [도구 목록](skills/cofa-delivery/references/tool-catalog.md) |
 | AI 없이 직접 답하는 연습 | [서술형 준비](skills/cofa-delivery/references/written-practice.md) |
