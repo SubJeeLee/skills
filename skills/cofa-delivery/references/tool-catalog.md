@@ -25,6 +25,7 @@ GSD의 기존 [저장소](https://github.com/gsd-build/get-shit-done)는 보관 
 | [OpenAI security-best-practices](https://github.com/openai/skills/tree/main/skills/.curated/security-best-practices) | 관련 언어·프레임워크의 보안 검토를 요청할 때 |
 | [OpenAI Docs](https://developers.openai.com/learn/docs-mcp) | 과제 자체가 OpenAI 기능·API·Codex 사용법 확인을 요구할 때 |
 | [Vercel agent-skills](https://github.com/vercel-labs/agent-skills) | 실제 스택이 React·Next.js 등 관련 기술일 때만 |
+| [visual-explainer 공개 원본](https://github.com/nicobailon/visual-explainer) / [이 저장소의 복사본](../../visual-explainer/SKILL.md) | 실제 코드 근거를 단계별 HTML로 설명할 때. 기본 HTML에는 MCP가 필수가 아니며 COFA 프로필·Node·전체 리소스 폴더 확인 |
 
 Skill 한 파일에 다른 도구·참조·스크립트 의존성이 있을 수 있다. 복사 전에 전체 필요한 구성과 라이선스를 확인한다. 지침 원문이 Code Review·TDD·보안 보고 등 더 큰 절차를 호출하는지도 확인한다.
 

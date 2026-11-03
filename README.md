@@ -2,7 +2,7 @@
 
 AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현·검증·설명하기 위한 한국어 작업 지침 모음입니다. 프레임워크나 모델의 성능 향상을 보장하는 패키지가 아니라, 판단 기준과 검증 증거를 유지하기 위한 준비 자료입니다.
 
-현재 제공하는 Skill은 **cofa-delivery**, **cofa-requirements-interview**, **cofa-requirements-review**, **cofa-architecture-tour**입니다. 180분 구현 과제의 준비와 리허설을 위한 자료이며, 실제 시험의 허용 범위는 해당 시험의 최신 안내가 우선합니다.
+현재 제공하는 Skill은 **cofa-delivery**, **cofa-requirements-interview**, **cofa-requirements-review**, **cofa-architecture-tour**, **visual-explainer**입니다. 180분 구현 과제의 준비와 리허설을 위한 자료이며, 실제 시험의 허용 범위는 해당 시험의 최신 안내가 우선합니다.
 
 | Skill | 역할 |
 | --- | --- |
@@ -10,6 +10,7 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 | [cofa-requirements-interview](skills/cofa-requirements-interview/SKILL.md) | README 기반 담당자 질문 선별, 답변 검증과 요구사항 반영 |
 | [cofa-requirements-review](skills/cofa-requirements-review/SKILL.md) | 별도 세션에서 원문·실제 담당자 답변·명세의 누락·충돌·가정을 검토 |
 | [cofa-architecture-tour](skills/cofa-architecture-tour/SKILL.md) | 아키텍처·데이터·구현 순서·Docker 흐름의 독립 HTML과 코드 투어 |
+| [visual-explainer](skills/visual-explainer/SKILL.md) | 공개 MIT Skill의 고정 버전과 COFA 프로필. 단계별 SVG·HTML 시각 설명 |
 
 ## 처음 읽을 파일
 
@@ -39,7 +40,15 @@ skills/cofa-delivery/SKILL.md를 읽고 현재 단계에 필요한 참조만 적
 
 단순히 clone했다고 Skill이 자동 등록되지는 않습니다. 일반 Codex의 프로젝트 Skill 탐색 경로는 `.agents/skills/`이며, 클라이언트와 버전의 지원 여부를 확인해야 합니다. 등록 없이 파일을 명시적으로 읽혀 사용하는 것도 가능합니다. 기존 지침을 덮어쓰거나 플랫폼 설정을 변경하지 않습니다.
 
-추가 Skill을 사용할 때는 네 폴더가 함께 있는 저장소를 읽히거나 필요한 Skill도 각각 추가합니다. `cofa-delivery` 하나만 설치한 경우 다른 Skill이 자동으로 함께 설치되지는 않습니다. 별도 Skill이 없으면 기존 문제 정의·설계 참조로 진행할 수 있습니다.
+추가 Skill을 사용할 때는 필요한 폴더가 함께 있는 저장소를 읽히거나 해당 Skill도 각각 추가합니다. `cofa-delivery` 하나만 설치한 경우 다른 Skill이 자동으로 함께 설치되지는 않습니다. 별도 Skill이 없으면 기존 문제 정의·설계 참조로 진행할 수 있습니다.
+
+`visual-explainer`는 `SKILL.md` 하나가 아닌 폴더 전체를 등록합니다. 클라이언트가 Skill을 실제로 읽고 Node.js와 작업 파일에 접근할 수 있으면 자연어 요청으로 HTML을 만들 수 있습니다. 설치가 HTML을 자동 생성하는 것은 아닙니다. [COFA용 실행 조건과 요청 예시](skills/visual-explainer/references/cofa.md)를 참고하세요.
+
+```text
+visual-explainer를 적용하고 COFA 프로필을 따라줘.
+현재 코드의 대표 요청 흐름을 파일·함수 근거와 함께 단계별 HTML로 만들어줘.
+제공 작업 공간에 저장하고 브라우저 자동 실행 없이 결과 경로를 알려줘.
+```
 
 ## 여러 Bash에서 사용하는 기본 구성
 
@@ -82,7 +91,7 @@ python3 skills/cofa-architecture-tour/scripts/render.py skills/cofa-architecture
 
 - 실제 비공개 시험 문제·해답·제공 데이터·완성 코드를 포함하지 않습니다.
 - 가상 연습 과제는 예시이며 출제 예측이 아닙니다.
-- 외부 프로젝트의 Skill이나 코드 원문을 복제하지 않고 링크와 용도를 정리합니다.
+- 대부분의 외부 도구는 링크와 용도만 정리합니다. 사용자가 추가 요청한 `visual-explainer`는 MIT 고지와 고정 커밋을 보존한 복사본이며 [출처·변경 내역](skills/visual-explainer/UPSTREAM.md)을 제공합니다.
 - 기본 동작에는 MCP, 외부 모델, API 키, 훅, 자동 설치 스크립트가 필요하지 않습니다.
 - 이 저장소를 사용하는 것만으로 작업 폴더에 파일이 생성되거나 도구가 설치되지는 않습니다.
 
@@ -91,8 +100,9 @@ python3 skills/cofa-architecture-tour/scripts/render.py skills/cofa-architecture
 ```bash
 python3 scripts/check_repository.py
 python3 scripts/test_architecture_renderer.py
+node scripts/test_visual_explainer.mjs
 ```
 
-첫 검사는 로컬 Markdown 링크와 Skill의 필수 메타데이터를 확인합니다. 두 번째는 HTML 생성기의 모델 무결성, 근거 필드 요구, 문자열 삽입과 기존 파일 보존을 확인합니다. 시험 허용 여부, Codex 자동 인식, 실제 앱·Docker 실행 성공을 검증하지는 않습니다.
+첫 검사는 로컬 Markdown 링크와 Skill의 필수 메타데이터를 확인합니다. 두 번째는 HTML 생성기의 모델 무결성, 근거 필드 요구, 문자열 삽입과 기존 파일 보존을 확인합니다. 세 번째는 복사한 visual-explainer와 COFA 래퍼의 렌더링·리소스 정책·기존 파일 보존을 확인합니다. 시험 허용 여부, Codex 자동 인식, 실제 앱·Docker 실행 성공을 검증하지는 않습니다.
 
 최초 작성: 2026-10-30. 담당자 질문·HTML 구조도 Skill 추가: 2026-11-03. 제3자 프로젝트의 기능과 설치 방식은 사용 전에 공식 자료를 다시 확인하세요.

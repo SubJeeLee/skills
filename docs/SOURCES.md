@@ -8,6 +8,8 @@
 
 MCP 연결은 참가자가 제공한 사전체험 화면의 `mcpServers` 최상위 JSON과 저장 버튼, 상세 가이드의 설정 반영 설명을 근거로 문서화했다. 화면·개인 자료는 재배포하지 않는다. 서버별 예제는 공식 자료를 바탕으로 작성했으며 COFA의 상세 스키마·연결 성공은 미검증이다.
 
+사용자의 추가 요청으로 visual-explainer 0.14.0의 정식 Skill 디렉터리를 고정 커밋에서 복사하고 MIT 고지를 보존했다. 로컬 COFA 프로필과 브라우저 자동 실행 없는 렌더 래퍼를 추가했다. 원본 출처와 변경 범위는 [UPSTREAM.md](../skills/visual-explainer/UPSTREAM.md)에 기록한다. 이 복사본의 등록만으로 COFA 실행 가능 여부가 확인되는 것은 아니다.
+
 ## 참가자가 제공한 안내
 
 - 「시험 필수확인사항 브리프」 1쪽: 일정, 단계별 시간, 제한과 공개 도구 활용.
@@ -33,11 +35,12 @@ MCP 연결은 참가자가 제공한 사전체험 화면의 `mcpServers` 최상�
 | [Context7](https://github.com/upstash/context7) | 문서 질의와 인증 방식 |
 | [Context7 클라이언트 설정](https://github.com/upstash/context7/blob/master/docs/resources/all-clients.mdx) | JSON 실행 파일·인자와 인증 예시. 2026-11-03 확인 |
 | [Serena 클라이언트 설정](https://oraios.github.io/serena/02-usage/030_clients.html) | 제공된 실행 파일과 Codex 컨텍스트·프로젝트 인자. 2026-11-03 확인 |
+| [visual-explainer 고정 커밋](https://github.com/nicobailon/visual-explainer/commit/3d592addcc1689ea2251ee67991f12f8a30fd2d9) | 0.14.0 Skill, 기본 렌더러·리소스와 MIT 고지. 2026-11-03 확인 |
 | [Dockerfile reference](https://docs.docker.com/reference/dockerfile/) | Dockerfile 지시문, 빌드·실행 구분과 EXPOSE 의미. 2026-11-03 확인 |
 | [Docker 빌드 컨텍스트](https://docs.docker.com/build/concepts/context/) | COPY가 접근하는 컨텍스트와 .dockerignore. 2026-11-03 확인 |
 | [Docker 다단계 빌드](https://docs.docker.com/build/building/multi-stage/) | 단계 간 빌드 산출물 복사와 실행 이미지 경계. 2026-11-03 확인 |
 
-일반 Codex의 기능 지원은 COFA 설치본의 지원을 보장하지 않는다. 이 저장소는 외부 지침 원문을 포함하지 않는다. 원문 코드를 재사용하면 해당 라이선스·고지를 별도로 확인한다.
+일반 Codex의 기능 지원은 COFA 설치본의 지원을 보장하지 않는다. 외부 지침은 기본적으로 링크만 제공하되, 사용자가 요청한 visual-explainer는 고정 출처와 라이선스를 보존해 포함한다. 원문 코드를 재사용하면 해당 라이선스·고지를 별도로 확인한다.
 
 ## 개인 후기
 
