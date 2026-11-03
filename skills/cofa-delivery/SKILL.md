@@ -28,6 +28,7 @@ description: 제한 시간 코딩 에이전트 과제의 준비·리허설 또�
 | 맥락 정리·세션 인계 | [인계](references/handoff.md) |
 | 시험 전 설명 연습 | [서술형 준비](references/written-practice.md) |
 | 추가 도구가 필요한 경우 | [도구 목록](references/tool-catalog.md) |
+| COFA MCP 탭에 JSON으로 연결 | [MCP JSON 안내](references/mcp-json.md) |
 
 ## 유지할 기준
 

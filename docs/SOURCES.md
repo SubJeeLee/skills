@@ -6,6 +6,8 @@
 
 같은 날 여러 Bash에서 제공 Codex를 직접 실행하는 운영안과 문제 정의 검토 Skill을 추가했다. 참가자의 환경 설명을 반영한 준비 지침이며 실제 동시 Codex 세션·공유 파일·자원 한도의 지원을 실측하거나 공식 승인한 자료는 아니다. 수동 분리 CLI 세션, 네이티브 서브에이전트, 한 세션의 역할 전환을 구분한다.
 
+MCP 연결은 참가자가 제공한 사전체험 화면의 `mcpServers` 최상위 JSON과 저장 버튼, 상세 가이드의 설정 반영 설명을 근거로 문서화했다. 화면·개인 자료는 재배포하지 않는다. 서버별 예제는 공식 자료를 바탕으로 작성했으며 COFA의 상세 스키마·연결 성공은 미검증이다.
+
 ## 참가자가 제공한 안내
 
 - 「시험 필수확인사항 브리프」 1쪽: 일정, 단계별 시간, 제한과 공개 도구 활용.
@@ -29,6 +31,8 @@
 | [OMX](https://github.com/Yeachan-Heo/oh-my-codex) | Codex 하네스·의존성·역할 분담·실행 옵션 |
 | [Playwright MCP](https://github.com/microsoft/playwright-mcp) | MCP와 CLI+Skill 접근의 차이 |
 | [Context7](https://github.com/upstash/context7) | 문서 질의와 인증 방식 |
+| [Context7 클라이언트 설정](https://github.com/upstash/context7/blob/master/docs/resources/all-clients.mdx) | JSON 실행 파일·인자와 인증 예시. 2026-11-03 확인 |
+| [Serena 클라이언트 설정](https://oraios.github.io/serena/02-usage/030_clients.html) | 제공된 실행 파일과 Codex 컨텍스트·프로젝트 인자. 2026-11-03 확인 |
 | [Dockerfile reference](https://docs.docker.com/reference/dockerfile/) | Dockerfile 지시문, 빌드·실행 구분과 EXPOSE 의미. 2026-11-03 확인 |
 | [Docker 빌드 컨텍스트](https://docs.docker.com/build/concepts/context/) | COPY가 접근하는 컨텍스트와 .dockerignore. 2026-11-03 확인 |
 | [Docker 다단계 빌드](https://docs.docker.com/build/building/multi-stage/) | 단계 간 빌드 산출물 복사와 실행 이미지 경계. 2026-11-03 확인 |

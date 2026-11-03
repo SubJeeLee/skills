@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "serena": {
+      "command": "serena",
+      "args": [
+        "start-mcp-server",
+        "--context=codex",
+        "--project",
+        "/ABSOLUTE/PATH/TO/PROJECT"
+      ]
+    }
+  }
+}

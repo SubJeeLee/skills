@@ -1,6 +1,6 @@
 # 도구 선택 목록
 
-2026-10-30에 공식 저장소·문서를 확인한 후보다. 스타 수나 모델 지원 표시는 설치 성공·성능·시험 허용을 보장하지 않는다. 설치하지 않은 도구를 이미 사용할 수 있다고 표현하지 않는다.
+2026-10-30에 공식 저장소·문서를 확인한 후보이며, 2026-11-03 MCP JSON 연결 안내와 Serena를 보완했다. 스타 수나 모델 지원 표시는 설치 성공·성능·시험 허용을 보장하지 않는다. 설치하지 않은 도구를 이미 사용할 수 있다고 표현하지 않는다.
 
 ## 하네스와 플러그인
 
@@ -30,10 +30,13 @@ Skill 한 파일에 다른 도구·참조·스크립트 의존성이 있을 수 
 
 ## MCP와 검증 도구
 
+COFA는 MCP 탭의 `mcpServers` JSON과 저장 버튼을 설정 진입점으로 사용한다. 실제 예제·필드 호환성·각 Bash 세션의 연결 확인은 [MCP JSON 안내](mcp-json.md)를 따른다. 일반 Codex의 TOML·설치 명령을 설정 화면에 그대로 붙여 넣지 않는다.
+
 | 후보 | 역할 | 시험 판단 |
 | --- | --- | --- |
 | [OpenAI Docs MCP](https://developers.openai.com/learn/docs-mcp) | 공식 OpenAI 문서 검색·읽기 | 필요한 과제일 때, 일반 문서 질의만 사용 |
 | [Context7](https://github.com/upstash/context7) | 라이브러리·버전별 문서 | 인증·외부 질의 전송·제공 환경 지원 확인 |
+| [Serena](https://github.com/oraios/serena) | 심볼·참조 관계 기반 코드 탐색·편집 | 설치·언어 서버·프로젝트 경로와 역할별 수정 범위 확인 |
 | [GitHub MCP](https://github.com/github/github-mcp-server) | 저장소·이슈·PR 도구 | 인증·쓰기·외부 전송 조건 확인. 다운로드만으로 충분할 수 있음 |
 | [Playwright Test](https://github.com/microsoft/playwright) | 반복 가능한 브라우저 테스트 | 실행 허용 범위 미확인 |
 | [Playwright MCP](https://github.com/microsoft/playwright-mcp) | 에이전트의 브라우저 탐색·조작 | 자동 조작 제한에 대한 운영진 확인 전 사용하지 않음 |

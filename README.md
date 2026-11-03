@@ -23,6 +23,7 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 | 에이전트 역할·수정 경계·검증과 판단 기록 | [여러 세션·멀티 에이전트 운영](skills/cofa-delivery/references/multi-agent.md) |
 | Spec Kit·BMAD·Superpowers 역할 비교 | [계획 도구](skills/cofa-delivery/references/planning-tools.md) |
 | 하네스·Skill·MCP 후보 | [도구 목록](skills/cofa-delivery/references/tool-catalog.md) |
+| COFA MCP 탭에 넣을 JSON 예제와 연결 확인 | [MCP JSON 안내](skills/cofa-delivery/references/mcp-json.md) |
 | AI 없이 직접 답하는 연습 | [서술형 준비](skills/cofa-delivery/references/written-practice.md) |
 | 자료의 근거와 최신성 | [출처](docs/SOURCES.md) |
 
@@ -64,6 +65,12 @@ python3 skills/cofa-architecture-tour/scripts/render.py skills/cofa-architecture
 ```
 
 예제는 공개용 합성 자료이며 앱·Docker 빌드 성공을 뜻하지 않습니다. 실제 과제의 모델 JSON·HTML과 질문 답변은 해당 작업 공간에 두고 이 공개 저장소에 올리지 않습니다.
+
+## MCP 연결 방식
+
+사전체험 화면의 MCP 탭은 `{"mcpServers": {}}` 형태의 JSON을 편집하고 저장하는 방식입니다. [연결 안내](skills/cofa-delivery/references/mcp-json.md)에 기존 서버를 보존해 합치는 절차와 [JSON 예제](skills/cofa-delivery/assets/mcp/)를 정리했습니다. 일반 Codex용 TOML이나 `codex mcp add` 명령을 이 화면에 붙여 넣지 않습니다.
+
+서버별 필드와 실제 연결은 COFA에서 확인해야 합니다. 예제 저장만으로 설치·인증·도구 호출이 성공했다고 보지 않으며, 여러 Bash의 Codex 세션에서 각각 확인합니다. 이 저장소는 MCP를 자동 연결하지 않습니다.
 
 ## 시험 반입 관련 미확인 사항
 
