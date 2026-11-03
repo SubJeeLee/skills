@@ -1,0 +1,4 @@
+interface:
+  display_name: "COFA Delivery"
+  short_description: "Spec Kit 명세와 공유 파일로 여러 Bash의 병렬 구현·검증을 연결"
+  default_prompt: "$cofa-delivery를 적용해 과제와 기존 Spec Kit 문서를 읽고, 공유 파일 기반 병렬 작업 준비와 첫 작업 배정을 진행해줘."
