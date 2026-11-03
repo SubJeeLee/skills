@@ -2,12 +2,13 @@
 
 AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현·검증·설명하기 위한 한국어 작업 지침 모음입니다. 프레임워크나 모델의 성능 향상을 보장하는 패키지가 아니라, 판단 기준과 검증 증거를 유지하기 위한 준비 자료입니다.
 
-현재 제공하는 Skill은 **cofa-delivery**, **cofa-requirements-interview**, **cofa-architecture-tour**입니다. 180분 구현 과제의 준비와 리허설을 위한 자료이며, 실제 시험의 허용 범위는 해당 시험의 최신 안내가 우선합니다.
+현재 제공하는 Skill은 **cofa-delivery**, **cofa-requirements-interview**, **cofa-requirements-review**, **cofa-architecture-tour**입니다. 180분 구현 과제의 준비와 리허설을 위한 자료이며, 실제 시험의 허용 범위는 해당 시험의 최신 안내가 우선합니다.
 
 | Skill | 역할 |
 | --- | --- |
 | [cofa-delivery](skills/cofa-delivery/SKILL.md) | 전체 진행, 위임, 검증과 인계 기준 |
 | [cofa-requirements-interview](skills/cofa-requirements-interview/SKILL.md) | README 기반 담당자 질문 선별, 답변 검증과 요구사항 반영 |
+| [cofa-requirements-review](skills/cofa-requirements-review/SKILL.md) | 별도 세션에서 원문·실제 담당자 답변·명세의 누락·충돌·가정을 검토 |
 | [cofa-architecture-tour](skills/cofa-architecture-tour/SKILL.md) | 아키텍처·데이터·구현 순서·Docker 흐름의 독립 HTML과 코드 투어 |
 
 ## 처음 읽을 파일
@@ -18,7 +19,8 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 | 180분 전체 시나리오 | [응시 시나리오](skills/cofa-delivery/references/scenario.md) |
 | 확인된 규칙과 미확인 사항 | [규칙 요약](skills/cofa-delivery/references/exam-boundaries.md) |
 | 첫 요청과 단계별 요청 예시 | [프롬프트](skills/cofa-delivery/references/prompts.md) |
-| 에이전트 역할·수정 경계·검증과 판단 기록 | [멀티 에이전트 운영](skills/cofa-delivery/references/multi-agent.md) |
+| 여러 Bash의 메인·검토 세션 시작과 인계 | [Bash 세션 운영](skills/cofa-delivery/references/bash-sessions.md) |
+| 에이전트 역할·수정 경계·검증과 판단 기록 | [여러 세션·멀티 에이전트 운영](skills/cofa-delivery/references/multi-agent.md) |
 | Spec Kit·BMAD·Superpowers 역할 비교 | [계획 도구](skills/cofa-delivery/references/planning-tools.md) |
 | 하네스·Skill·MCP 후보 | [도구 목록](skills/cofa-delivery/references/tool-catalog.md) |
 | AI 없이 직접 답하는 연습 | [서술형 준비](skills/cofa-delivery/references/written-practice.md) |
@@ -36,7 +38,17 @@ skills/cofa-delivery/SKILL.md를 읽고 현재 단계에 필요한 참조만 적
 
 단순히 clone했다고 Skill이 자동 등록되지는 않습니다. 일반 Codex의 프로젝트 Skill 탐색 경로는 `.agents/skills/`이며, 클라이언트와 버전의 지원 여부를 확인해야 합니다. 등록 없이 파일을 명시적으로 읽혀 사용하는 것도 가능합니다. 기존 지침을 덮어쓰거나 플랫폼 설정을 변경하지 않습니다.
 
-추가 Skill을 사용할 때는 세 폴더가 함께 있는 저장소를 읽히거나 필요한 Skill도 각각 추가합니다. `cofa-delivery` 하나만 설치한 경우 다른 Skill이 자동으로 함께 설치되지는 않습니다. 별도 Skill이 없으면 기존 문제 정의·설계 참조로 진행할 수 있습니다.
+추가 Skill을 사용할 때는 네 폴더가 함께 있는 저장소를 읽히거나 필요한 Skill도 각각 추가합니다. `cofa-delivery` 하나만 설치한 경우 다른 Skill이 자동으로 함께 설치되지는 않습니다. 별도 Skill이 없으면 기존 문제 정의·설계 참조로 진행할 수 있습니다.
+
+## 여러 Bash에서 사용하는 기본 구성
+
+- Bash A: 제공 Codex로 문제 정의·구현·통합을 맡는 메인 세션.
+- Bash B: 제공 Codex에 `cofa-requirements-review`를 읽혀 원문과 명세를 대조하는 검토 세션. 제품과 명세는 수정하지 않고 지정 보고서만 작성합니다.
+- Bash C: 필요할 때 개발 서버나 검사를 실행하는 터미널입니다.
+
+별도 Bash의 세션은 메인의 대화를 자동으로 알거나 결과를 자동 전달하지 않습니다. 실제 공유 파일 접근·동시 실행 지원을 확인한 뒤 [메인·검토 시작 프롬프트와 인계 절차](skills/cofa-delivery/references/bash-sessions.md)를 사용합니다. 네이티브 서브에이전트 기능 없이도 적용할 수 있는 운영안이며, 지원되지 않으면 한 세션에서 순차 검토합니다.
+
+## 단계별 요청 예시
 
 ```text
 cofa-delivery로 전체 진행 기준을 유지해줘.

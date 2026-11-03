@@ -18,10 +18,12 @@ description: 제한 시간 코딩 에이전트 과제의 준비·리허설 또�
 | 전체 리허설·시간 배분 | [시나리오](references/scenario.md) |
 | 초기 역할·요구사항 파악 | [문제 정의](references/problem-definition.md), 필요하면 [프롬프트](references/prompts.md) |
 | README 기반 담당자 질문 선별·답변 반영 | 제공돼 있으면 [담당자 질문 Skill](../cofa-requirements-interview/SKILL.md) |
+| 원문·담당자 답변·명세의 독립 대조 | 제공돼 있으면 [문제 정의 검증 Skill](../cofa-requirements-review/SKILL.md) |
 | 설계·범위 선택 | [설계](references/design.md), 도구 선택 시 [계획 도구](references/planning-tools.md) |
 | 아키텍처·데이터·Docker 흐름의 HTML과 이해도 점검 | 제공돼 있으면 [아키텍처 투어 Skill](../cofa-architecture-tour/SKILL.md) |
 | 구현·역할 분담 | [구현](references/implementation.md) |
-| 멀티 에이전트 구성·위임·통합 기록 | [멀티 에이전트 운영](references/multi-agent.md) |
+| 여러 Bash에서 메인·검토 Codex를 직접 실행 | [Bash 세션 운영](references/bash-sessions.md) |
+| 역할별 위임·통합 기록과 네이티브 위임 대안 | [여러 세션·멀티 에이전트 운영](references/multi-agent.md) |
 | 오류·완료 검증 | [검증](references/verification.md) |
 | 맥락 정리·세션 인계 | [인계](references/handoff.md) |
 | 시험 전 설명 연습 | [서술형 준비](references/written-practice.md) |
