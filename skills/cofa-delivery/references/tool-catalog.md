@@ -10,7 +10,6 @@
 | [ECC](https://github.com/affaan-m/ECC) | 다양한 개발 Skill·검증·맥락 관리 | Codex 경로가 있어도 개별 Skill의 훅·명령 호환성 확인 |
 | [OMX](https://github.com/Yeachan-Heo/oh-my-codex) | Codex 역할 분담·팀·검토·상태 유지 | CLI·설정·일부 tmux 의존성, 제공 환경 호환성 확인 |
 | [Spec Kit](https://github.com/github/spec-kit) | 명세→계획→작업→구현 | 실제 설치본의 Codex 통합·명령과 기존 프로젝트 지원 확인 |
-| [BMAD](https://github.com/bmad-code-org/BMAD-METHOD) | 업무·제품·UX·아키텍처·개발 | 필요한 계획 도구만 선택. 명확한 과제에 전체 제품 절차를 강제하지 않음 |
 
 OMX README의 `--madmax`는 승인·샌드박스 우회 옵션과 연결된다. 시험에서 해당 예시를 그대로 실행하지 않는다. 전체 하네스 여러 개를 동시에 적용하기보다 하나의 기준 워크플로를 정한다.
 
