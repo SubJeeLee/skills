@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "title": "가상 인사 서비스 · 설계와 코드 투어",
+  "scope": "공개 예제용 합성 모델입니다. 앱 소스나 Dockerfile은 포함하지 않으며 모든 구성은 계획입니다. 실제 시험 문제·코드·데이터가 아닙니다.",
+  "snapshot": "가상 설계 초안 · 코드 분석 및 실행 검증 미수행",
+  "diagrams": [
+    {
+      "id": "architecture",
+      "title": "아키텍처",
+      "description": "하나의 서비스가 입력 화면, 요청 처리와 응답을 제공하는 단순 구성을 계획합니다. DB나 별도 인증 서비스는 가정하지 않습니다.",
+      "nodes": [
+        {"id": "page", "label": "입력 화면", "column": 0, "row": 0, "status": "planned", "summary": "사용자가 인사에 사용할 표시명을 입력합니다.", "inputs": ["사용자가 입력한 표시명"], "outputs": ["표시명이 포함된 요청"], "conditions": ["요청 중 중복 전송을 어떻게 처리할지 결정"], "failures": ["빈 입력 또는 요청 실패를 화면에 표시"], "sources": [], "evidence": []},
+        {"id": "handler", "label": "단일 서비스 요청 처리", "column": 1, "row": 0, "status": "planned", "summary": "입력 검증과 인사 문자열 생성 책임을 한 프로세스에 둡니다.", "inputs": ["표시명 요청"], "outputs": ["성공 또는 입력 오류 응답"], "conditions": ["빈 문자열과 허용 길이 기준 확인"], "failures": ["잘못된 입력에는 성공 응답을 반환하지 않음"], "sources": [], "evidence": []},
+        {"id": "result", "label": "결과 화면", "column": 2, "row": 0, "status": "planned", "summary": "서버 응답을 텍스트로 표시하는 계획입니다.", "inputs": ["서버의 메시지 또는 오류"], "outputs": ["사용자가 확인하는 결과"], "conditions": ["응답 문자열을 HTML로 실행하지 않음"], "failures": ["실패 시 이전 성공 표시와 구분"], "sources": [], "evidence": []}
+      ],
+      "edges": [
+        {"from": "page", "to": "handler", "label": "표시명 요청", "status": "planned", "sources": [], "evidence": []},
+        {"from": "handler", "to": "result", "label": "메시지 또는 오류", "status": "planned", "sources": [], "evidence": []}
+      ]
+    },
+    {
+      "id": "data-flow",
+      "title": "입력 한 건의 데이터 흐름",
+      "description": "각 노드를 선택하면 입력·출력, 분기와 실패 조건을 확인할 수 있습니다. 아래 값은 설명용이며 실제 실행 기록이 아닙니다.",
+      "nodes": [
+        {"id": "input", "label": "1. 표시명 입력", "column": 0, "row": 0, "status": "planned", "summary": "화면의 입력값을 요청 데이터로 만듭니다.", "inputs": ["가상 표시명: 방문자"], "outputs": ["표시명 필드"], "conditions": ["표시명이 없을 때의 규칙 확인"], "failures": ["누락 입력"], "sources": [], "evidence": []},
+        {"id": "validate", "label": "2. 서버 입력 검증", "column": 1, "row": 0, "status": "planned", "summary": "클라이언트 확인과 별도로 서버가 입력을 검증합니다.", "inputs": ["요청 데이터"], "outputs": ["유효한 표시명 또는 오류"], "conditions": ["문자열 여부와 길이"], "failures": ["잘못된 자료형과 빈 값"], "sources": [], "evidence": []},
+        {"id": "compose", "label": "3. 응답 생성", "column": 1, "row": 1, "status": "planned", "summary": "유효한 입력으로 인사 메시지를 생성합니다.", "inputs": ["검증된 표시명"], "outputs": ["응답 메시지"], "conditions": ["데이터를 저장할 요구는 아직 없음"], "failures": ["처리 실패를 성공으로 표시하지 않음"], "sources": [], "evidence": []},
+        {"id": "display", "label": "4. 응답 표시", "column": 2, "row": 1, "status": "planned", "summary": "응답을 받아 성공과 오류 상태를 구분합니다.", "inputs": ["응답 상태와 메시지"], "outputs": ["결과 텍스트"], "conditions": ["통신 실패와 업무 오류 구분"], "failures": ["응답 없음 또는 잘못된 응답"], "sources": [], "evidence": []}
+      ],
+      "edges": [
+        {"from": "input", "to": "validate", "label": "요청", "status": "planned", "sources": [], "evidence": []},
+        {"from": "validate", "to": "compose", "label": "검증 통과", "status": "planned", "sources": [], "evidence": []},
+        {"from": "compose", "to": "display", "label": "메시지 반환", "status": "planned", "sources": [], "evidence": []},
+        {"from": "validate", "to": "display", "label": "입력 오류 반환", "status": "planned", "sources": [], "evidence": []}
+      ]
+    },
+    {
+      "id": "implementation",
+      "title": "구현과 검증 순서",
+      "description": "필수 흐름을 먼저 실행하고 검증합니다. 파일과 검사가 준비되기 전에 문서만으로 완료 처리하지 않습니다.",
+      "nodes": [
+        {"id": "requirements", "label": "1. 요구와 응답 계약", "column": 0, "row": 0, "status": "planned", "summary": "입력, 성공 응답, 오류 조건을 먼저 결정합니다.", "inputs": ["README와 담당자 답변"], "outputs": ["첫 흐름의 인수 조건"], "conditions": ["결과를 바꾸는 미확인 조건만 질문"], "failures": ["질문에 답이 없으면 확정으로 표시하지 않음"], "sources": [], "evidence": []},
+        {"id": "slice", "label": "2. 첫 실행 가능한 흐름", "column": 1, "row": 0, "status": "planned", "summary": "화면부터 서버 응답까지 작은 흐름을 연결합니다.", "inputs": ["확정한 계약"], "outputs": ["실행 가능한 코드"], "conditions": ["기존 환경을 우선 사용"], "failures": ["환경 오류와 앱 오류 구분"], "sources": [], "evidence": []},
+        {"id": "tests", "label": "3. 성공·실패 검증", "column": 1, "row": 1, "status": "planned", "summary": "정상 표시명과 잘못된 입력의 결과를 확인합니다.", "inputs": ["실행 코드와 인수 조건"], "outputs": ["실제 검사 결과"], "conditions": ["실행하지 못한 검사는 미검증"], "failures": ["실패 재현과 수정 후 재검증"], "sources": [], "evidence": []},
+        {"id": "handoff", "label": "4. 컨테이너·설명·제출", "column": 2, "row": 1, "status": "planned", "summary": "요구된 Docker 범위를 수행하고 실행 방법과 한계를 정리합니다.", "inputs": ["최종 코드와 검사 기록"], "outputs": ["필수 제출 파일과 실행 설명"], "conditions": ["Docker 작성과 실행 성공 구분"], "failures": ["플랫폼에서 실행 불가한 부분을 기록"], "sources": [], "evidence": []}
+      ],
+      "edges": [
+        {"from": "requirements", "to": "slice", "label": "범위·계약", "status": "planned", "sources": [], "evidence": []},
+        {"from": "slice", "to": "tests", "label": "현재 코드", "status": "planned", "sources": [], "evidence": []},
+        {"from": "tests", "to": "handoff", "label": "검증 결과", "status": "planned", "sources": [], "evidence": []}
+      ]
+    },
+    {
+      "id": "docker",
+      "title": "Docker 빌드와 실행",
+      "description": "가상 단일 서비스의 컨테이너화 계획입니다. 베이스 이미지·런타임·포트는 아직 선택하지 않았습니다. 클라우드 배포는 이 예제의 범위가 아닙니다.",
+      "nodes": [
+        {"id": "context", "label": "빌드: 컨텍스트", "column": 0, "row": 0, "status": "planned", "summary": "필요 소스와 의존성 파일을 빌드에 전달합니다.", "inputs": ["소스·잠금 파일·Dockerfile"], "outputs": [".dockerignore가 적용된 빌드 컨텍스트"], "conditions": ["필수 파일 누락과 비밀 파일 포함 확인"], "failures": ["COPY 대상이 컨텍스트 밖이거나 제외됨"], "sources": [], "evidence": []},
+        {"id": "image", "label": "빌드: 실행 이미지", "column": 1, "row": 0, "status": "planned", "summary": "실제 스택에 맞는 의존성과 코드를 이미지에 준비합니다.", "inputs": ["빌드 컨텍스트"], "outputs": ["애플리케이션 실행 이미지"], "conditions": ["빌드 산출물과 시작 경로 일치"], "failures": ["설치 실패 또는 시작 파일 누락"], "sources": [], "evidence": []},
+        {"id": "process", "label": "실행: 컨테이너 프로세스", "column": 1, "row": 1, "status": "planned", "summary": "CMD 또는 ENTRYPOINT로 실제 서비스 프로세스를 시작합니다.", "inputs": ["이미지와 실행 시 구성"], "outputs": ["서비스 수신 포트와 로그"], "conditions": ["수신 주소와 내부 포트 확인"], "failures": ["프로세스 종료 또는 구성 누락"], "sources": [], "evidence": []},
+        {"id": "access", "label": "실행: 서비스 접근", "column": 2, "row": 1, "status": "planned", "summary": "제공 환경이 허용하는 포트 매핑 또는 내부 미리보기로 확인합니다.", "inputs": ["실행 중인 서비스"], "outputs": ["대표 요청의 실제 결과"], "conditions": ["EXPOSE만으로 접근 가능하다고 가정하지 않음"], "failures": ["매핑·주소·경로 불일치"], "sources": [], "evidence": []}
+      ],
+      "edges": [
+        {"from": "context", "to": "image", "label": "이미지 빌드", "status": "planned", "sources": [], "evidence": []},
+        {"from": "image", "to": "process", "label": "컨테이너 시작", "status": "planned", "sources": [], "evidence": []},
+        {"from": "process", "to": "access", "label": "포트와 요청", "status": "planned", "sources": [], "evidence": []}
+      ]
+    }
+  ],
+  "docker": [
+    {"item": "Dockerfile 작성", "status": "planned", "detail": "실제 코드의 실행 경로와 의존성을 확인한 뒤 작성할 계획입니다.", "sources": [], "evidence": []},
+    {"item": "빌드·기동·기능 검증", "status": "unknown", "detail": "앱과 Dockerfile이 없는 합성 예제이므로 검사를 실행하지 않았습니다.", "sources": [], "evidence": []}
+  ],
+  "decisions": [
+    {"choice": "하나의 서비스 프로세스부터 계획", "reason": "첫 사용자 흐름과 검증 범위를 작게 유지하려는 가상 설계 선택입니다.", "alternatives": "별도 프런트엔드 서버·DB·인증 서비스는 요구가 확인될 때 검토합니다.", "evidence": ["가상 예제의 범위 선언. 실제 요구나 코드 근거가 아닙니다."]}
+  ],
+  "questions": [
+    "표시명은 어느 단계에서 검증하며 잘못된 값은 어떤 응답으로 바뀌나요?",
+    "그림에서 계획과 실제 코드 확인, 실행 검증은 어떻게 구분되나요?",
+    "이미지를 빌드하는 과정과 컨테이너가 요청을 처리하는 과정은 무엇이 다른가요?",
+    "현재 실제로 확인한 근거가 없는데 완료라고 말해서는 안 되는 부분은 무엇인가요?"
+  ]
+}

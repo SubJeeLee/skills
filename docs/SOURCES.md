@@ -2,6 +2,8 @@
 
 검토 기준일: 2026-10-30. 이 저장소는 독립적인 개인 준비 자료이며 SK하이닉스·COFA·OpenAI 등의 공식 문서나 승인·후원 자료가 아니다.
 
+2026-11-03 보완: README 기반 질문 선별과 HTML 아키텍처·데이터·Docker 투어 Skill을 추가했다. 기존 시험 일정·운영 규칙을 재응시의 최신 공지로 갱신했다는 뜻은 아니다. 복기한 실제 시험 문제·데이터·대화는 포함하지 않는다.
+
 ## 참가자가 제공한 안내
 
 - 「시험 필수확인사항 브리프」 1쪽: 일정, 단계별 시간, 제한과 공개 도구 활용.
@@ -25,6 +27,9 @@
 | [OMX](https://github.com/Yeachan-Heo/oh-my-codex) | Codex 하네스·의존성·역할 분담·실행 옵션 |
 | [Playwright MCP](https://github.com/microsoft/playwright-mcp) | MCP와 CLI+Skill 접근의 차이 |
 | [Context7](https://github.com/upstash/context7) | 문서 질의와 인증 방식 |
+| [Dockerfile reference](https://docs.docker.com/reference/dockerfile/) | Dockerfile 지시문, 빌드·실행 구분과 EXPOSE 의미. 2026-11-03 확인 |
+| [Docker 빌드 컨텍스트](https://docs.docker.com/build/concepts/context/) | COPY가 접근하는 컨텍스트와 .dockerignore. 2026-11-03 확인 |
+| [Docker 다단계 빌드](https://docs.docker.com/build/building/multi-stage/) | 단계 간 빌드 산출물 복사와 실행 이미지 경계. 2026-11-03 확인 |
 
 일반 Codex의 기능 지원은 COFA 설치본의 지원을 보장하지 않는다. 이 저장소는 외부 지침 원문을 포함하지 않는다. 원문 코드를 재사용하면 해당 라이선스·고지를 별도로 확인한다.
 

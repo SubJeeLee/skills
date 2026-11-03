@@ -2,7 +2,13 @@
 
 AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현·검증·설명하기 위한 한국어 작업 지침 모음입니다. 프레임워크나 모델의 성능 향상을 보장하는 패키지가 아니라, 판단 기준과 검증 증거를 유지하기 위한 준비 자료입니다.
 
-현재 제공하는 Skill은 **cofa-delivery**입니다. 180분 구현 과제의 준비와 리허설을 위한 자료이며, 실제 시험의 허용 범위는 해당 시험의 최신 안내가 우선합니다.
+현재 제공하는 Skill은 **cofa-delivery**, **cofa-requirements-interview**, **cofa-architecture-tour**입니다. 180분 구현 과제의 준비와 리허설을 위한 자료이며, 실제 시험의 허용 범위는 해당 시험의 최신 안내가 우선합니다.
+
+| Skill | 역할 |
+| --- | --- |
+| [cofa-delivery](skills/cofa-delivery/SKILL.md) | 전체 진행, 위임, 검증과 인계 기준 |
+| [cofa-requirements-interview](skills/cofa-requirements-interview/SKILL.md) | README 기반 담당자 질문 선별, 답변 검증과 요구사항 반영 |
+| [cofa-architecture-tour](skills/cofa-architecture-tour/SKILL.md) | 아키텍처·데이터·구현 순서·Docker 흐름의 독립 HTML과 코드 투어 |
 
 ## 처음 읽을 파일
 
@@ -30,6 +36,23 @@ skills/cofa-delivery/SKILL.md를 읽고 현재 단계에 필요한 참조만 적
 
 단순히 clone했다고 Skill이 자동 등록되지는 않습니다. 일반 Codex의 프로젝트 Skill 탐색 경로는 `.agents/skills/`이며, 클라이언트와 버전의 지원 여부를 확인해야 합니다. 등록 없이 파일을 명시적으로 읽혀 사용하는 것도 가능합니다. 기존 지침을 덮어쓰거나 플랫폼 설정을 변경하지 않습니다.
 
+추가 Skill을 사용할 때는 세 폴더가 함께 있는 저장소를 읽히거나 필요한 Skill도 각각 추가합니다. `cofa-delivery` 하나만 설치한 경우 다른 Skill이 자동으로 함께 설치되지는 않습니다. 별도 Skill이 없으면 기존 문제 정의·설계 참조로 진행할 수 있습니다.
+
+```text
+cofa-delivery로 전체 진행 기준을 유지해줘.
+담당자에게 질문하기 전 cofa-requirements-interview로 README의 미확인 조건을 추려줘.
+설계와 첫 구현 이후에는 cofa-architecture-tour로 실제 근거가 있는 HTML 흐름도를 만들고,
+계획·코드 확인·실행 검증 상태를 구분해서 내가 데이터 흐름을 설명할 수 있게 도와줘.
+```
+
+HTML은 외부 라이브러리 없이 생성합니다. 먼저 Python 3이 있는지 확인하고, 저장소 루트에서 아래 명령으로 가상 예제를 만들어 볼 수 있습니다. 기존 출력이 있으면 기본적으로 덮어쓰지 않습니다.
+
+```bash
+python3 skills/cofa-architecture-tour/scripts/render.py skills/cofa-architecture-tour/assets/example.json --output /tmp/cofa-architecture-example.html
+```
+
+예제는 공개용 합성 자료이며 앱·Docker 빌드 성공을 뜻하지 않습니다. 실제 과제의 모델 JSON·HTML과 질문 답변은 해당 작업 공간에 두고 이 공개 저장소에 올리지 않습니다.
+
 ## 시험 반입 관련 미확인 사항
 
 공개 GitHub 자료를 가져올 수 있다는 안내와 **응시자가 시험 전에 작성해 공개한 개인 템플릿의 반입 허용**은 같은 의미가 아닙니다. 후자는 확인되지 않았습니다. 이 저장소가 공개돼 있다는 사실은 시험 사용 허가를 뜻하지 않습니다.
@@ -48,8 +71,9 @@ skills/cofa-delivery/SKILL.md를 읽고 현재 단계에 필요한 참조만 적
 
 ```bash
 python3 scripts/check_repository.py
+python3 scripts/test_architecture_renderer.py
 ```
 
-이 검사는 로컬 Markdown 링크와 Skill의 필수 메타데이터를 확인합니다. 시험 허용 여부, Codex 자동 인식, 실제 구현 성능을 검증하지는 않습니다.
+첫 검사는 로컬 Markdown 링크와 Skill의 필수 메타데이터를 확인합니다. 두 번째는 HTML 생성기의 모델 무결성, 근거 필드 요구, 문자열 삽입과 기존 파일 보존을 확인합니다. 시험 허용 여부, Codex 자동 인식, 실제 앱·Docker 실행 성공을 검증하지는 않습니다.
 
-작성 기준일: 2026-10-30. 제3자 프로젝트의 기능과 설치 방식은 사용 전에 공식 자료를 다시 확인하세요.
+최초 작성: 2026-10-30. 담당자 질문·HTML 구조도 Skill 추가: 2026-11-03. 제3자 프로젝트의 기능과 설치 방식은 사용 전에 공식 자료를 다시 확인하세요.
