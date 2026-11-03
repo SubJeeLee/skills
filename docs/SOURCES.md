@@ -10,6 +10,8 @@ MCP 연결은 참가자가 제공한 사전체험 화면의 `mcpServers` 최상�
 
 사용자의 추가 요청으로 visual-explainer 0.14.0의 정식 Skill 디렉터리를 고정 커밋에서 복사하고 MIT 고지를 보존했다. 로컬 COFA 프로필과 브라우저 자동 실행 없는 렌더 래퍼를 추가했다. 원본 출처와 변경 범위는 [UPSTREAM.md](../skills/visual-explainer/UPSTREAM.md)에 기록한다. 이 복사본의 등록만으로 COFA 실행 가능 여부가 확인되는 것은 아니다.
 
+같은 날 사용자 요청에 따라 Spec Kit을 기본 명세 도구로 정하고, Skill 호출 시 공유 파일 기반 작업 배정을 준비하도록 변경했다. Python 표준 라이브러리 초기화 도구는 로컬 배정표·양식·시작 프롬프트만 만들며 세션 생성·MCP 연결·공유 파일 실측·파일 잠금은 수행하지 않는다. 로컬 테스트는 파일 생성·기존 자료 보존과 폴더 단독 사용을 확인하며 COFA의 병렬 실행 지원을 검증하지 않는다.
+
 ## 참가자가 제공한 안내
 
 - 「시험 필수확인사항 브리프」 1쪽: 일정, 단계별 시간, 제한과 공개 도구 활용.
@@ -27,7 +29,6 @@ MCP 연결은 참가자가 제공한 사전체험 화면의 `mcpServers` 최상�
 | [Codex Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) | 독립 작업 분리와 병렬 쓰기·토큰 비용 |
 | [OpenAI Docs MCP](https://developers.openai.com/learn/docs-mcp) | 문서 검색·읽기 전용 서버 |
 | [Spec Kit](https://github.com/github/spec-kit) | 명세에서 구현으로 연결하는 워크플로 |
-| [BMAD 계획 경로](https://docs.bmad-method.org/plan/choose-a-planning-path/) | 의도의 명확성에 따른 계획 선택 |
 | [Superpowers](https://github.com/obra/superpowers) | 설계·검증·디버깅 Skill |
 | [ECC](https://github.com/affaan-m/ECC) | Codex 지원 경로 및 개별 Skill |
 | [OMX](https://github.com/Yeachan-Heo/oh-my-codex) | Codex 하네스·의존성·역할 분담·실행 옵션 |

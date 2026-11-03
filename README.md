@@ -6,7 +6,7 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 
 | Skill | 역할 |
 | --- | --- |
-| [cofa-delivery](skills/cofa-delivery/SKILL.md) | 전체 진행, 위임, 검증과 인계 기준 |
+| [cofa-delivery](skills/cofa-delivery/SKILL.md) | Spec Kit 중심 명세, 공유 파일 기반 병렬 구현 준비·배정·통합 |
 | [cofa-requirements-interview](skills/cofa-requirements-interview/SKILL.md) | README 기반 담당자 질문 선별, 답변 검증과 요구사항 반영 |
 | [cofa-requirements-review](skills/cofa-requirements-review/SKILL.md) | 별도 세션에서 원문·실제 담당자 답변·명세의 누락·충돌·가정을 검토 |
 | [cofa-architecture-tour](skills/cofa-architecture-tour/SKILL.md) | 아키텍처·데이터·구현 순서·Docker 흐름의 독립 HTML과 코드 투어 |
@@ -22,7 +22,7 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 | 첫 요청과 단계별 요청 예시 | [프롬프트](skills/cofa-delivery/references/prompts.md) |
 | 여러 Bash의 메인·검토 세션 시작과 인계 | [Bash 세션 운영](skills/cofa-delivery/references/bash-sessions.md) |
 | 에이전트 역할·수정 경계·검증과 판단 기록 | [여러 세션·멀티 에이전트 운영](skills/cofa-delivery/references/multi-agent.md) |
-| Spec Kit·BMAD·Superpowers 역할 비교 | [계획 도구](skills/cofa-delivery/references/planning-tools.md) |
+| Spec Kit 중심 명세와 병렬 작업 분해 | [계획 도구](skills/cofa-delivery/references/planning-tools.md) |
 | 하네스·Skill·MCP 후보 | [도구 목록](skills/cofa-delivery/references/tool-catalog.md) |
 | COFA MCP 탭에 넣을 JSON 예제와 연결 확인 | [MCP JSON 안내](skills/cofa-delivery/references/mcp-json.md) |
 | AI 없이 직접 답하는 연습 | [서술형 준비](skills/cofa-delivery/references/written-practice.md) |
@@ -33,7 +33,8 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 이 저장소를 읽을 수 있는 환경에서 다음처럼 요청합니다.
 
 ```text
-skills/cofa-delivery/SKILL.md를 읽고 현재 단계에 필요한 참조만 적용해줘.
+cofa-delivery를 적용해 Spec Kit 중심으로 과제를 진행하고,
+공유 파일 기반 병렬 작업 준비와 첫 작업 배정을 진행해줘.
 실제 과제의 지침과 기존 프로젝트 규칙을 먼저 확인해줘.
 기술 스택, 설치된 도구, 허용 범위가 확인되기 전에는 추정하지 마.
 ```
@@ -41,6 +42,8 @@ skills/cofa-delivery/SKILL.md를 읽고 현재 단계에 필요한 참조만 적
 단순히 clone했다고 Skill이 자동 등록되지는 않습니다. 일반 Codex의 프로젝트 Skill 탐색 경로는 `.agents/skills/`이며, 클라이언트와 버전의 지원 여부를 확인해야 합니다. 등록 없이 파일을 명시적으로 읽혀 사용하는 것도 가능합니다. 기존 지침을 덮어쓰거나 플랫폼 설정을 변경하지 않습니다.
 
 추가 Skill을 사용할 때는 필요한 폴더가 함께 있는 저장소를 읽히거나 해당 Skill도 각각 추가합니다. `cofa-delivery` 하나만 설치한 경우 다른 Skill이 자동으로 함께 설치되지는 않습니다. 별도 Skill이 없으면 기존 문제 정의·설계 참조로 진행할 수 있습니다.
+
+`cofa-delivery`는 **폴더 전체**를 등록합니다. 병렬 준비용 스크립트·양식·시작 프롬프트가 이 폴더 안에 있어 다른 Skill이나 MCP 없이 사용할 수 있습니다. 설치 자체는 실행되지 않으며, 허용된 개발 과제에서 호출하면 메인이 환경·기존 Spec Kit 문서를 읽고 `.cofa/`를 준비한 뒤 실제 첫 작업을 배정합니다. 다른 Bash를 열고 제공 Codex를 시작하는 것은 사용자가 수행합니다.
 
 `visual-explainer`는 `SKILL.md` 하나가 아닌 폴더 전체를 등록합니다. 클라이언트가 Skill을 실제로 읽고 Node.js와 작업 파일에 접근할 수 있으면 자연어 요청으로 HTML을 만들 수 있습니다. 설치가 HTML을 자동 생성하는 것은 아닙니다. [COFA용 실행 조건과 요청 예시](skills/visual-explainer/references/cofa.md)를 참고하세요.
 
@@ -53,10 +56,18 @@ visual-explainer를 적용하고 COFA 프로필을 따라줘.
 ## 여러 Bash에서 사용하는 기본 구성
 
 - Bash A: 제공 Codex로 문제 정의·구현·통합을 맡는 메인 세션.
-- Bash B: 제공 Codex에 `cofa-requirements-review`를 읽혀 원문과 명세를 대조하는 검토 세션. 제품과 명세는 수정하지 않고 지정 보고서만 작성합니다.
+- Bash B: 작업 요청을 읽고 원문 검토·독립 구현·검증·코드 추적 중 배정된 작업을 수행하는 보조 세션입니다. 지정 파일과 회차별 보고서만 수정합니다.
 - Bash C: 필요할 때 개발 서버나 검사를 실행하는 터미널입니다.
 
 별도 Bash의 세션은 메인의 대화를 자동으로 알거나 결과를 자동 전달하지 않습니다. 실제 공유 파일 접근·동시 실행 지원을 확인한 뒤 [메인·검토 시작 프롬프트와 인계 절차](skills/cofa-delivery/references/bash-sessions.md)를 사용합니다. 네이티브 서브에이전트 기능 없이도 적용할 수 있는 운영안이며, 지원되지 않으면 한 세션에서 순차 검토합니다.
+
+호출 시 생성한 `.cofa/coordination.md`에는 기존 명세·계획·작업 목록의 경로와 파일별 수정 책임을 연결합니다. 메인이 `.cofa/tasks/R01.md`의 실제 입력·완료 기준을 채우고 ready로 배정하면, 보조 Bash의 Codex에 아래처럼 요청할 수 있습니다. 작업 ID·회차를 바꿀 때는 프롬프트의 경로도 갱신합니다.
+
+```text
+.cofa/prompts/worker.md를 읽고 배정된 작업만 수행해줘.
+```
+
+보조는 보고서를 완성해 경로를 알려주고, 메인은 원문·diff·검사 결과로 접수합니다. 파일 잠금과 세션 간 자동 메시지는 구현하지 않습니다. Spec Kit 문서를 기준으로 유지하며 다른 전체 계획 하네스는 병행하지 않습니다.
 
 ## 단계별 요청 예시
 
@@ -93,16 +104,17 @@ python3 skills/cofa-architecture-tour/scripts/render.py skills/cofa-architecture
 - 가상 연습 과제는 예시이며 출제 예측이 아닙니다.
 - 대부분의 외부 도구는 링크와 용도만 정리합니다. 사용자가 추가 요청한 `visual-explainer`는 MIT 고지와 고정 커밋을 보존한 복사본이며 [출처·변경 내역](skills/visual-explainer/UPSTREAM.md)을 제공합니다.
 - 기본 동작에는 MCP, 외부 모델, API 키, 훅, 자동 설치 스크립트가 필요하지 않습니다.
-- 이 저장소를 사용하는 것만으로 작업 폴더에 파일이 생성되거나 도구가 설치되지는 않습니다.
+- 설치만으로 작업 파일이 생성되지는 않습니다. 허용된 개발 작업에서 `cofa-delivery`를 호출하면 메인이 로컬 병렬 작업 문서를 준비합니다. 초기화 도구 자체는 세션 생성·도구 설치·구현·검증을 수행하지 않습니다.
 
 ## 검증
 
 ```bash
 python3 scripts/check_repository.py
+python3 scripts/test_parallel_bootstrap.py
 python3 scripts/test_architecture_renderer.py
 node scripts/test_visual_explainer.mjs
 ```
 
-첫 검사는 로컬 Markdown 링크와 Skill의 필수 메타데이터를 확인합니다. 두 번째는 HTML 생성기의 모델 무결성, 근거 필드 요구, 문자열 삽입과 기존 파일 보존을 확인합니다. 세 번째는 복사한 visual-explainer와 COFA 래퍼의 렌더링·리소스 정책·기존 파일 보존을 확인합니다. 시험 허용 여부, Codex 자동 인식, 실제 앱·Docker 실행 성공을 검증하지는 않습니다.
+첫 검사는 로컬 Markdown 링크와 Skill의 필수 메타데이터를 확인합니다. 병렬 초기화 검사는 실제 파일 생성·기존 파일 보존·경로 충돌 거부와 Skill 폴더 단독 사용을 확인합니다. 나머지는 HTML 생성기의 근거·모델 무결성과 visual-explainer 래퍼의 렌더링·리소스 정책을 확인합니다. 시험 허용 여부, COFA 동시 Codex 실행·자동 인식, 실제 앱·Docker 실행 성공을 검증하지는 않습니다.
 
 최초 작성: 2026-10-30. 담당자 질문·HTML 구조도 Skill 추가: 2026-11-03. 제3자 프로젝트의 기능과 설치 방식은 사용 전에 공식 자료를 다시 확인하세요.
