@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ponytail"
+  short_description: "기존 코드를 재사용하고 필수 기능과 검증을 유지하는 간결한 구현"
+  default_prompt: "$ponytail의 full 원칙으로 필요한 기능을 간결하게 구현하고, 배정 범위와 완료 기준 및 실제 검사 결과를 유지해줘."
