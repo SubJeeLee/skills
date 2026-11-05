@@ -14,6 +14,8 @@ MCP 연결은 참가자가 제공한 사전체험 화면의 `mcpServers` 최상�
 
 2026-11-04: 사용자 요청으로 Ponytail 핵심 Skill을 고정 커밋에서 가져오고 MIT 고지를 포함했다. 별도 Skill에는 COFA 구현 프로필을 추가했고, `cofa-delivery`에도 원문과 라이선스를 포함해 폴더 단독 사용을 유지했다. full 원칙을 메인·보조의 코드 작성 단계에 연결하되 완료 기준·수정 소유권·검증·설명 기록을 보존한다. 플러그인 훅·대시보드·추가 명령은 포함하지 않으며 COFA에서의 시간·비용 절감은 측정하지 않았다. [출처·변경 범위](../skills/ponytail/UPSTREAM.md)를 참고한다.
 
+2026-11-05: 사용자 요청으로 Anthropic frontend-design과 Emil의 emil-design-eng·animate를 고정 커밋에서 가져왔다. frontend-design의 Apache-2.0과 Emil의 MIT 고지를 보존했고, animate가 읽는 RECIPES도 포함했다. 별도 Skill에는 변경 고지가 있는 COFA 프로필을 추가하고 `cofa-delivery`에는 원문과 고지를 그대로 넣었다. 첫 UI의 기본 기준과 기능·주요 검증 이후의 선택 개선을 구분하며 별도 초기 디자인 시간은 배정하지 않는다. 라이선스·원문 경로·해시는 [UI 적용 기준](../skills/cofa-delivery/references/ui-design.md)에 연결한다. 설치·브라우저 실행이나 실제 시험 품질·성능 개선을 검증한 자료는 아니다.
+
 ## 참가자가 제공한 안내
 
 - 「시험 필수확인사항 브리프」 1쪽: 일정, 단계별 시간, 제한과 공개 도구 활용.
@@ -40,11 +42,13 @@ MCP 연결은 참가자가 제공한 사전체험 화면의 `mcpServers` 최상�
 | [Serena 클라이언트 설정](https://oraios.github.io/serena/02-usage/030_clients.html) | 제공된 실행 파일과 Codex 컨텍스트·프로젝트 인자. 2026-11-03 확인 |
 | [visual-explainer 고정 커밋](https://github.com/nicobailon/visual-explainer/commit/3d592addcc1689ea2251ee67991f12f8a30fd2d9) | 0.14.0 Skill, 기본 렌더러·리소스와 MIT 고지. 2026-11-03 확인 |
 | [Ponytail 고정 커밋](https://github.com/DietrichGebert/ponytail/commit/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846) | 핵심 Skill, full 원칙과 MIT 라이선스. 2026-11-04 확인 |
+| [Anthropic frontend-design 고정 커밋](https://github.com/anthropics/skills/commit/ca45fc496a3436251f191354091d557da31c15b5) | 주제에 맞는 첫 UI 지침, Apache-2.0 고지. 2026-11-05 확인 |
+| [Emil Skills 고정 커밋](https://github.com/emilkowalski/skills/commit/c8a79627b59d72d764d6ab6f2c87c09a48169833) | emil-design-eng, animate와 RECIPES, MIT 고지. 2026-11-05 확인 |
 | [Dockerfile reference](https://docs.docker.com/reference/dockerfile/) | Dockerfile 지시문, 빌드·실행 구분과 EXPOSE 의미. 2026-11-03 확인 |
 | [Docker 빌드 컨텍스트](https://docs.docker.com/build/concepts/context/) | COPY가 접근하는 컨텍스트와 .dockerignore. 2026-11-03 확인 |
 | [Docker 다단계 빌드](https://docs.docker.com/build/building/multi-stage/) | 단계 간 빌드 산출물 복사와 실행 이미지 경계. 2026-11-03 확인 |
 
-일반 Codex의 기능 지원은 COFA 설치본의 지원을 보장하지 않는다. 외부 지침은 기본적으로 링크만 제공하되, 요청받은 visual-explainer와 Ponytail은 고정 출처와 라이선스를 보존해 포함한다. 원문 코드를 재사용하면 해당 라이선스·고지를 별도로 확인한다.
+일반 Codex의 기능 지원은 COFA 설치본의 지원을 보장하지 않는다. 외부 지침은 기본적으로 링크만 제공하되, 요청받은 visual-explainer·Ponytail·frontend-design·Emil 선택 Skill은 고정 출처와 해당 라이선스를 보존해 포함한다. 원문 코드를 재사용하면 해당 라이선스·고지를 별도로 확인한다.
 
 ## 개인 후기
 

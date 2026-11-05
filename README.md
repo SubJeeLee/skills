@@ -2,7 +2,7 @@
 
 AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현·검증·설명하기 위한 한국어 작업 지침 모음입니다. 프레임워크나 모델의 성능 향상을 보장하는 패키지가 아니라, 판단 기준과 검증 증거를 유지하기 위한 준비 자료입니다.
 
-현재 제공하는 Skill은 **cofa-delivery**, **cofa-requirements-interview**, **cofa-requirements-review**, **cofa-architecture-tour**, **visual-explainer**, **ponytail**입니다. 180분 구현 과제의 준비와 리허설을 위한 자료이며, 실제 시험의 허용 범위는 해당 시험의 최신 안내가 우선합니다.
+현재 제공하는 Skill은 **cofa-delivery**, **cofa-requirements-interview**, **cofa-requirements-review**, **cofa-architecture-tour**, **visual-explainer**, **ponytail**, **frontend-design**, **emil-design-eng**, **animate**입니다. 180분 구현 과제의 준비와 리허설을 위한 자료이며, 실제 시험의 허용 범위는 해당 시험의 최신 안내가 우선합니다.
 
 | Skill | 역할 |
 | --- | --- |
@@ -12,6 +12,9 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 | [cofa-architecture-tour](skills/cofa-architecture-tour/SKILL.md) | 아키텍처·데이터·구현 순서·Docker 흐름의 독립 HTML과 코드 투어 |
 | [visual-explainer](skills/visual-explainer/SKILL.md) | 공개 MIT Skill의 고정 버전과 COFA 프로필. 단계별 SVG·HTML 시각 설명 |
 | [ponytail](skills/ponytail/SKILL.md) | 기존 코드·의존성을 재사용해 필요한 기능을 간결하게 구현. full 원칙과 COFA 범위 유지 |
+| [frontend-design](skills/frontend-design/SKILL.md) | 기획 확정 후 첫 UI의 기본 시각 기준. 기능 구현을 앞세우는 COFA 프로필 포함 |
+| [emil-design-eng](skills/emil-design-eng/SKILL.md) | 필수 기능·주요 검증 완료 후 배정된 화면의 세부 개선 |
+| [animate](skills/animate/SKILL.md) | 기능·주요 검증 이후 필요한 상호작용에만 선택 모션 구현 |
 
 ## 처음 읽을 파일
 
@@ -47,6 +50,10 @@ cofa-delivery를 적용해 Spec Kit 중심으로 과제를 진행하고,
 `cofa-delivery`는 **폴더 전체**를 등록합니다. 병렬 준비용 스크립트·양식·시작 프롬프트가 이 폴더 안에 있어 다른 Skill이나 MCP 없이 사용할 수 있습니다. 설치 자체는 실행되지 않으며, 허용된 개발 과제에서 호출하면 메인이 환경·기존 Spec Kit 문서를 읽고 `.cofa/`를 준비한 뒤 실제 첫 작업을 배정합니다. 다른 Bash를 열고 제공 Codex를 시작하는 것은 사용자가 수행합니다.
 
 구현 단계에는 [Ponytail full 적용 기준](skills/cofa-delivery/references/ponytail.md)을 메인·보조 각각 읽힙니다. 원문과 MIT 고지를 `cofa-delivery` 안에도 포함해 해당 폴더만 등록해도 사용할 수 있습니다. 별도로 Ponytail을 호출하려면 `skills/ponytail` 폴더 전체를 등록합니다. 플러그인 훅이나 별도 모델은 연결하지 않습니다. 기존 작업 폴더의 프롬프트는 자동으로 덮어쓰지 않으므로 재개할 때 메인이 적용 기준을 반영합니다.
+
+[UI 적용 기준](skills/cofa-delivery/references/ui-design.md)은 **문제 정의·요구사항·기술 설계·필수 기능·검증을 우선**합니다. 첫 UI에는 frontend-design의 색상·글자·간격·정보 위계 기준만 적용하며 별도 디자인 기획을 시작하지 않습니다. Emil의 emil-design-eng와 animate는 필수 기능·주요 검사 완료 후 남은 시간에만 사용하고, 시간이 부족하면 생략합니다. 기능에 필요한 접근성·오류·상태 표시는 뒤로 미루지 않습니다.
+
+세 Skill의 원문·필요한 RECIPES·각 라이선스를 `cofa-delivery`에도 포함해 폴더 하나만 등록해도 적용 시점에 맞춰 읽을 수 있습니다. 별도 호출에는 해당 Skill 폴더 전체를 등록합니다. Emil 전체 묶음이나 Motion·Motiscope·브라우저 도구는 자동 설치하지 않습니다.
 
 `visual-explainer`는 `SKILL.md` 하나가 아닌 폴더 전체를 등록합니다. 클라이언트가 Skill을 실제로 읽고 Node.js와 작업 파일에 접근할 수 있으면 자연어 요청으로 HTML을 만들 수 있습니다. 설치가 HTML을 자동 생성하는 것은 아닙니다. [COFA용 실행 조건과 요청 예시](skills/visual-explainer/references/cofa.md)를 참고하세요.
 
@@ -105,7 +112,7 @@ python3 skills/cofa-architecture-tour/scripts/render.py skills/cofa-architecture
 
 - 실제 비공개 시험 문제·해답·제공 데이터·완성 코드를 포함하지 않습니다.
 - 가상 연습 과제는 예시이며 출제 예측이 아닙니다.
-- 대부분의 외부 도구는 링크와 용도만 정리합니다. 요청받은 `visual-explainer`와 `ponytail`은 MIT 고지와 고정 커밋을 보존한 복사본입니다. [visual-explainer 출처](skills/visual-explainer/UPSTREAM.md)와 [Ponytail 출처·변경 내역](skills/ponytail/UPSTREAM.md)에 범위를 기록합니다.
+- 대부분의 외부 도구는 링크와 용도만 정리합니다. 요청받은 복사본은 고정 커밋과 해당 라이선스를 보존합니다. [visual-explainer](skills/visual-explainer/UPSTREAM.md), [Ponytail](skills/ponytail/UPSTREAM.md), [frontend-design](skills/frontend-design/UPSTREAM.md), [emil-design-eng](skills/emil-design-eng/UPSTREAM.md), [animate](skills/animate/UPSTREAM.md)에 출처·변경 범위를 기록합니다. frontend-design은 Apache-2.0, 나머지 복사본은 각각 포함된 MIT 고지를 따릅니다.
 - 기본 동작에는 MCP, 외부 모델, API 키, 훅, 자동 설치 스크립트가 필요하지 않습니다.
 - 설치만으로 작업 파일이 생성되지는 않습니다. 허용된 개발 작업에서 `cofa-delivery`를 호출하면 메인이 로컬 병렬 작업 문서를 준비합니다. 초기화 도구 자체는 세션 생성·도구 설치·구현·검증을 수행하지 않습니다.
 
