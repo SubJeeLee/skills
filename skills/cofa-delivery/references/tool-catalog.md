@@ -20,6 +20,7 @@ GSD의 기존 [저장소](https://github.com/gsd-build/get-shit-done)는 보관 
 | 후보 | 필요한 상황 |
 | --- | --- |
 | [Ponytail 적용 기준](ponytail.md) / [별도 Skill](../../ponytail/SKILL.md) | 코드 작성·수정 시 full 원칙을 기본 적용. 기존 코드·의존성을 재사용하며 필수 요구와 배정 범위·검사·설명 기록 유지 |
+| [frontend-design·Emil 적용 기준](ui-design.md) | 기획 확정 후 첫 UI에는 최소 기준만 적용. Emil·animate는 기능·주요 검사 완료 후 남은 시간에만 사용. 원문·RECIPES·고지 포함 |
 | [검증 후 완료 선언](https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md) | 실제 검사 증거와 완료 상태 구분 |
 | [체계적 디버깅](https://github.com/obra/superpowers/blob/main/skills/systematic-debugging/SKILL.md) | 반복 오류·원인 추적 |
 | [OpenAI security-best-practices](https://github.com/openai/skills/tree/main/skills/.curated/security-best-practices) | 관련 언어·프레임워크의 보안 검토를 요청할 때 |

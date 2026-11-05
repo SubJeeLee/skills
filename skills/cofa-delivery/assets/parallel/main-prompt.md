@@ -7,6 +7,10 @@
 코드 작성·수정 전 {{SKILL_FILE}}와 같은 Skill 폴더의 references/ponytail.md를 읽고
 Ponytail full 원칙으로 기존 코드·의존성을 재사용해 간결하게 구현해줘.
 필수 완료 기준과 실제 검사·결정 이유·데이터 흐름 설명은 유지해줘.
+웹 UI를 만들 때는 같은 Skill 폴더의 references/ui-design.md를 먼저 읽어줘.
+frontend-design은 확정 명세의 첫 UI 기본 기준에만 적용하고,
+Emil·animate는 필수 기능과 주요 검사 완료 후 시간이 남을 때만 배정해줘.
+디자인 탐색이나 애니메이션 때문에 기능 개발·검증을 늦추지 마.
 
 먼저 .cofa/coordination.md와 기존 요청·보고서의 상태를 확인해줘.
 진행 중 작업은 담당 세션을 확인해 재개하고 요청을 다시 작성하지 마.

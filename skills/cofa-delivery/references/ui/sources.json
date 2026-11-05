@@ -1,0 +1,43 @@
+[
+  {
+    "skill": "frontend-design",
+    "repository": "anthropics/skills",
+    "commit": "ca45fc496a3436251f191354091d557da31c15b5",
+    "files": [
+      {
+        "upstream_path": "skills/frontend-design/SKILL.md",
+        "embedded_file": "frontend-design.md",
+        "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+      }
+    ]
+  },
+  {
+    "skill": "emil-design-eng",
+    "repository": "emilkowalski/skills",
+    "commit": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
+    "files": [
+      {
+        "upstream_path": "skills/emil-design-eng/SKILL.md",
+        "embedded_file": "emil-design-eng.md",
+        "sha256": "965cc3108047a1f68e504977ae7816c66115b202a32e7509c0b8305314839c54"
+      }
+    ]
+  },
+  {
+    "skill": "animate",
+    "repository": "emilkowalski/skills",
+    "commit": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
+    "files": [
+      {
+        "upstream_path": "skills/animate/SKILL.md",
+        "embedded_file": "animate.md",
+        "sha256": "39138996033e0dbe53e73217514116eaeca774bae84a0687c80d445a4e0cc3a6"
+      },
+      {
+        "upstream_path": "skills/animate/RECIPES.md",
+        "embedded_file": "RECIPES.md",
+        "sha256": "21ff63d84391db8d96ecdf9170095f55a42c836ccc36fd3269c4772bab031ba2"
+      }
+    ]
+  }
+]

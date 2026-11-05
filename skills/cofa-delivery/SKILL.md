@@ -24,6 +24,8 @@ description: 제한 시간 코딩 과제에서 Spec Kit 중심 명세와 여러 
 
 `cofa-delivery` 폴더 하나에 이 준비에 필요한 스크립트·양식·운영 지침이 포함된다. 다른 Skill이나 MCP는 선택 사항이다. 과제 파일은 제공 작업 공간에 두고 이 공개 준비 저장소에는 만들지 않는다.
 
+웹 UI 작업은 [UI 적용 기준](references/ui-design.md)을 먼저 읽는다. 기획·요구·기술 계약이 확정된 첫 구현에는 frontend-design의 기본 시각 원칙만 적용한다. Emil의 세부 개선·선택 모션은 **필수 기능과 주요 검증 완료 후 남은 시간에만** 배정하며, 디자인을 위해 기능 구현을 늦추지 않는다. 필요한 원문과 고지는 이 폴더에도 포함돼 있다.
+
 ## 현재 단계에 필요한 자료만 읽기
 
 | 현재 작업 | 읽을 자료 |
@@ -37,6 +39,7 @@ description: 제한 시간 코딩 과제에서 Spec Kit 중심 명세와 여러 
 | 단계별 시각 설명과 인터랙티브 SVG·HTML | 제공돼 있으면 [visual-explainer](../visual-explainer/SKILL.md)의 COFA 프로필 |
 | 구현·역할 분담 | [구현](references/implementation.md) |
 | 구현·디버깅의 기본 원칙 | [Ponytail full과 COFA 적용 기준](references/ponytail.md) |
+| 확정 명세의 첫 UI / 기능 검증 후 선택 디자인 | [frontend-design·Emil 적용 시점](references/ui-design.md) |
 | 기본 시작: 공유 파일 배정·병렬 구현·결과 회수 | [Bash 세션 운영](references/bash-sessions.md), [초기화 스크립트](scripts/bootstrap_parallel.py) |
 | 역할별 위임·통합 기록과 네이티브 위임 대안 | [여러 세션·멀티 에이전트 운영](references/multi-agent.md) |
 | 오류·완료 검증 | [검증](references/verification.md) |
