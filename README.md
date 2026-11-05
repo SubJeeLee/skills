@@ -20,6 +20,7 @@ AI 코딩 에이전트와 제한된 시간 안에 문제를 정의하고, 구현
 
 | 목적 | 파일 |
 | --- | --- |
+| 시험 시작·보조 Bash·통합·제출을 따라가는 실행 가이드 | [COFA 시험 실행 가이드](docs/EXAM-RUNBOOK.md) |
 | AI의 진입점과 단계별 읽기 경로 | [SKILL.md](skills/cofa-delivery/SKILL.md) |
 | 180분 전체 시나리오 | [응시 시나리오](skills/cofa-delivery/references/scenario.md) |
 | 확인된 규칙과 미확인 사항 | [규칙 요약](skills/cofa-delivery/references/exam-boundaries.md) |
