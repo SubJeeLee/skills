@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emil Design Engineering"
+  short_description: "필수 기능과 주요 검증 이후 배정된 화면의 세부 완성도를 개선"
+  default_prompt: "$emil-design-eng를 적용하기 전에 기능과 주요 검사 완료를 확인하고, 여유 시간이 있으면 지정된 UI 파일만 개선해줘."

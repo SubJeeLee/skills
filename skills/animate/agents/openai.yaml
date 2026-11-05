@@ -1,0 +1,4 @@
+interface:
+  display_name: "Animate"
+  short_description: "기능 검증 이후 필요한 상호작용에만 기존 도구로 작은 모션 구현"
+  default_prompt: "$animate로 지정 상호작용을 구현하되 COFA에서는 필수 기능과 주요 검사 완료 및 수정 범위를 먼저 확인해줘."

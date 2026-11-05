@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Design"
+  short_description: "확정된 요구 안에서 첫 UI의 정보 위계와 기본 시각 기준을 적용"
+  default_prompt: "$frontend-design으로 확정된 명세의 첫 UI를 구현하되 기능을 우선하고 별도 디자인 탐색과 선택 모션은 뒤로 미뤄줘."
